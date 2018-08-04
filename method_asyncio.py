@@ -12,12 +12,15 @@ context_intent_text_list3=[['hotel','checkin','checking in'],['hotel','lorem','i
 class Asyncio(object):
         def __init__(self):
             pass
+        #extracting the data and writing into pandas data frame
         async def data_extraction(self,textdata):
                 my_list1,my_list2,my_list3=[x[0] for x in textdata],[x[1]for x in textdata],[x[2] for x in textdata]
                 #await asyncio.sleep(0.0001)
+                #writing dataframe
                 df2=pd.DataFrame({'context':my_list1,'intent':my_list2,'data':my_list3,'timestamp':datetime.now()})
                 await asyncio.sleep(0.0001)
                 print(df2)
+        #asynchoronous execution of tasks
         async def method_asyncio(self):
                 ext1 = loop.create_task(self.data_extraction(context_intent_text_list))
                 ext2 = loop.create_task(self.data_extraction(context_intent_text_list2))
